@@ -50,13 +50,17 @@ class HomePage extends StatelessWidget {
                       return true;
                     },
                     builder: (context, mahasiswaList) {
-                      return ListView.builder(
+                      return GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 8,
+                        ),
                         itemCount: mahasiswaList.length,
                         itemBuilder: (context, index) {
                           if (mahasiswaList[0].name != "") {
                             return Card(
                               elevation: 3,
-                              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                               child: InkWell(
                                 onTap: () {
                                   Navigator.of(context).push(
@@ -66,31 +70,24 @@ class HomePage extends StatelessWidget {
                                     }),
                                   );
                                 },
-                                child: Padding(
-                                  padding: EdgeInsets.all(12),
-                                  child: Row(
-                                    children: [
-                                      Image.network(
-                                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
-                                        width: 50,
-                                        height: 50,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(height: 12),
+                                    Expanded( // Wrap the Image widget with Expanded
+                                      child: Image.network(
+                                        'https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png',
+                                        fit: BoxFit.cover, // Ensure the image covers the available space
                                       ),
-                                      SizedBox(width: 16),
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            mahasiswaList[index].name,
-                                            style: TextStyle(fontWeight: FontWeight.bold),
-                                          ),
-                                          SizedBox(height: 4),
-                                          Text(mahasiswaList[index].nim),
-                                        ],
-                                      ),
-                                      Spacer(),
-                                      Icon(Icons.arrow_forward),
-                                    ],
-                                  ),
+                                    ),
+                                    SizedBox(height: 8),
+                                    Text(
+                                      mahasiswaList[index].name,
+                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(mahasiswaList[index].nim),
+                                    SizedBox(height: 8),
+                                  ],
                                 ),
                               ),
                             );

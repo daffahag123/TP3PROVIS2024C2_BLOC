@@ -22,7 +22,7 @@ class DetailMahasiswaPage extends StatelessWidget {
             children: [
               Positioned.fill(
               child: Image(
-                image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+                image: NetworkImage('https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png'),
                 fit: BoxFit.cover,
               )),
               Positioned.fill(
